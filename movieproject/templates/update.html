@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block a %}
+{% endblock %}
+{% block body %}
+<div class="container" style="height:750px;width:400px;background-color:yellow;">
+<form  method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit">
+
+</form>
+  </div>
+{% endblock %}

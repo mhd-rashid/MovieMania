@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if category %}
+     <div>
+         <div class="row my_row_class">
+             <div class="mx-auto">
+             <p><a href="{% url 'movie:AllMovieCat' %}">our Movie collections</a></p>
+             </div>
+         </div>
+     </div>
+     {% endif %}
+    <div class="mx-auto">
+        {% if category %}
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center my_title">{{category.name}}</h1>
+    </div>
+        {% else %}
+    <div>
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center my_title">our Movie collections</h1>
+    </div>
+        {% endif %}
+
+    <div>
+        <div>
+
+            <div class="container">
+                <div class="row mx_auto">
+                    {% for movie in movie.object_list %}
+                    <div class="my_bottom_margin col-9 col-sm-12 col-md-4 xol-lg-4">
+                        <div class="card text-center" style=",in-width=18rem;">
+                            <a href="{{movie.get_url}}"><img class="card-img-top my_pro" src="{{movie.image.url}}" alt="{{movie.name}}" width="130px;" height="130px;"></a>
+                            <div class="card-body">
+                                <h4>{{movie.name}}</h4>
+                                <p>{{movie.year}}</p>
+                                <div class="container">
+                                    <p style="height:100px;">{{movie.desc}} </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+
+                <br>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
